@@ -54,6 +54,8 @@ For adding things like gradients and radiused corners:
     .button
         @include radius(3px)
         @include gradient(#f4f4f4, #ddd)
+        &:hover
+            @include shadow(0, 0, 2px, #444)
         
 More to come?
 -------------
