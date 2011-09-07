@@ -56,6 +56,9 @@ For adding things like gradients and radiused corners:
         @include gradient(#f4f4f4, #ddd)
         &:hover
             @include shadow(0, 0, 2px, #444)
+        &:active
+            position: relative
+            top: 1px
         
 More to come?
 -------------
