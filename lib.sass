@@ -32,6 +32,12 @@ $gutters: 10px
   position: relative
   left: -(($width / $grid_cols) * $cols)
   
+@mixin prefix($cols)
+  padding-left: (($width / $grid_cols) * $cols)
+  
+@mixin suffix($cols)
+  padding-right: (($width / $grid_cols) * $cols)
+  
 @mixin radius($a)
   -moz-border-radius: $a
   -webkit-border-radius: $a
