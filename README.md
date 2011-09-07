@@ -10,7 +10,7 @@ At the top of your style sheet:
 
     @import lib
 
-then:
+then something like this for your layout --
 
     #wrapper
         @include container()
@@ -23,3 +23,9 @@ then:
         
     #main
         @include grid(12)
+
+For adding things like gradients and radiused corners:
+
+    .button
+        @include radius(3px)
+        @include gradient(#f4f4f4, #ddd)
