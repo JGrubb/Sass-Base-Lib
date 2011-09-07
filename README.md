@@ -24,7 +24,7 @@ then something like this for your layout --
     #main
         @include grid(12)
         
-Note that the 960 conventions of Alpha and Omega for nested grid units are included.  Thus, nesting a pair of 6-span columns inside a 12-span column would go something like this:
+Note that the 960.gs conventions of Alpha and Omega for nested grid units are included.  Thus, nesting a pair of 6-span columns inside a 12-span column would go something like this:
 
     #left-col
         @include grid(6)
@@ -33,6 +33,21 @@ Note that the 960 conventions of Alpha and Omega for nested grid units are inclu
     #right-col
         @include grid(6)
         @include omega()
+        
+Push and Pull mixins are included for content first layouts:
+
+    #main
+        @include grid(12)
+        @include push(4)
+        
+    #left-sidebar
+        @include grid(4)
+        @include pull(12)
+        
+I know this particular wheel has been invented (Compass, et al), but I get tired of looking for a copy of the 960.gs every time I start a new project and Compass seemed to have a learning curve that I didn't have time for when I wrote this.  This also prevents the psuedo-problem of purists looking at your markup and seeing that you don't give one single rip about putting a bunch of non-semantic classes all over the place just to achieve your layout (if you worry about that).
+
+Styling
+-------
 
 For adding things like gradients and radiused corners:
 
@@ -40,3 +55,5 @@ For adding things like gradients and radiused corners:
         @include radius(3px)
         @include gradient(#f4f4f4, #ddd)
         
+More to come?
+-------------
