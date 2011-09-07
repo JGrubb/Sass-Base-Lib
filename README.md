@@ -34,6 +34,17 @@ Note that the 960.gs conventions of Alpha and Omega for nested grid units are in
         @include grid(6)
         @include omega()
         
+Prefix and Suffix to pad in the first column of the above:
+
+    #left-col
+        @include grid(4)
+        @include prefix(2)
+        @include alpha()
+    
+    #right-col
+        @include grid(6)
+        @include omega()
+
 Push and Pull mixins are included for content first layouts:
 
     #main
