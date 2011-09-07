@@ -23,9 +23,20 @@ then something like this for your layout --
         
     #main
         @include grid(12)
+        
+Note that the 960 conventions of Alpha and Omega for nested grid units are included.  Thus, nesting a pair of 6-span columns inside a 12-span column would go something like this:
+
+    #left-col
+        @include grid(6)
+        @include alpha()
+        
+    #right-col
+        @include grid(6)
+        @include omega()
 
 For adding things like gradients and radiused corners:
 
     .button
         @include radius(3px)
         @include gradient(#f4f4f4, #ddd)
+        
