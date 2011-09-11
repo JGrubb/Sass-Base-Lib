@@ -11,18 +11,12 @@ $gutters: 10px
   width: $width
   margin: 0 auto
 
-@mixin grid($cols)
+@mixin grid($cols, $margin-left: $gutters, $margin-right: $gutters)
   width: (($width / $grid_cols) * $cols) - ($gutters * 2)
   display: inline
   float: left
-  margin-left: $gutters
-  margin-right: $gutters
-  
-@mixin alpha()
-  margin-left: 0
-  
-@mixin omega()
-  margin-right: 0
+  margin-left: $margin-left
+  margin-right: $margin-right
   
 @mixin push($cols)
   position: relative
