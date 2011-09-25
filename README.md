@@ -1,10 +1,12 @@
 Super Basic Sass Library
 ========================
 
-Inspired by a plane ride to Oregon and the 960.gs.  
+Starter kit for building fluid grids with Sass.  Inspired by 960.gs and a plane ride to Oregon.
 
 Basic usage
 -----------
+
+This library can be used to build fixed grids like the 960.gs with no problem.  Set the $width variable at the top of the lib.sass sheet to whatever, say 960px, and you're good to go.  About a month after starting this and discovering fluid grids, it turns out that it's even better for those.  Set width to 100%, set your gutters to a percentage as well, and you're off to the races.
 
 At the top of your style sheet:
 
@@ -24,26 +26,18 @@ then something like this for your layout --
     #main
         @include grid(12)
         
-Note that the 960.gs conventions of Alpha and Omega for nested grid units are included.  Thus, nesting a pair of 6-span columns inside a 12-span column would go something like this:
+Note that the 960.gs conventions of Alpha and Omega for nested grid units are not longer present.  I've instead included arguments for the left and right margins of a column.  If you're nesting grid units inside of others, just set the $margin-left to 0 for the first one:
 
-    #left-col
-        @include grid(6)
-        @include alpha()
+    #nested-left
+      @include grid(3, $margin-left:0)
+      
+    #nested-right
+      @include grid(3, $margin-right:0)
         
-    #right-col
-        @include grid(6)
-        @include omega()
-        
-Prefix and Suffix to pad in the first column of the above:
-
-    #left-col
-        @include grid(4)
-        @include prefix(2)
-        @include alpha()
+This also handily negates the need for the prefix and suffix classes for moving stuff in a little more.  Instead of having to apply grid_4 and prefix_1 and suffix_1 to pad a 6 grid box correctly, you just say 
+    @include grid(6, $margin-left: 10%, $margin-right: 10%)
     
-    #right-col
-        @include grid(6)
-        @include omega()
+I know suffix and prefix work with padding instead of margins, so I'll get around to that soon.
 
 Push and Pull mixins are included for content first layouts:
 
