@@ -30,7 +30,9 @@ $gutters: 1.5%
 @mixin pull($cols)
   position: relative
   left: -(($width / $grid_cols) * $cols)
-  
+
+// I never use the push/pull feature in 960, so it's possible that this doesn't work correctly.
+
 @mixin radius($a)
   -moz-border-radius: $a
   -webkit-border-radius: $a
