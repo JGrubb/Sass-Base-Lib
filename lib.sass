@@ -1,5 +1,7 @@
 // Define width and number of columns and gutters
 // Change to suit.
+// Pixels work just as well (ie 960 px).  I'm just on a fluid grid kick right now.
+
 
 $width: 100%
 $grid_cols: 16
@@ -17,7 +19,10 @@ $gutters: 1.5%
   float: left
   margin-left: $margin-left
   margin-right: $margin-right
-  
+
+// Usage: @include grid(4)
+// If a nested grid - @include grid(4, $margin-left: 0)
+
 @mixin push($cols)
   position: relative
   left: (($width / $grid_cols) * $cols)
