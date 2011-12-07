@@ -63,7 +63,7 @@ Push and Pull mixins are included for content first layouts:
       @include grid(4)
       @include pull(12)
         
-I know this particular wheel has been invented (Compass, et al), but I get tired of unzipping a copy of the 960.gs every time I start a new project and Compass seemed to have a tiny learning curve that I didn't have time for when I wrote this.  This also prevents the psuedo-problem of purists looking at your markup and seeing that you don't give one single rip about putting a bunch of non-semantic classes all over the place just to achieve your layout (if you worry about that).
+I know this particular wheel has been invented (Compass, et al), but I get tired of unzipping a copy of the 960.gs every time I start a new project and Compass seemed to have a tiny learning curve that I didn't have time for when I wrote this.  This will at the very least cause me, and only me, to think more carefully about the semantics of my markup.
 
 Styling
 -------
