@@ -43,8 +43,8 @@ $gutters: 1.5%
   -webkit-box-shadow: $a $b $c $d
   box-shadow: $a $b $c $d
   
-@mixin gradient($color1, $color2, $stop: 100%)
-  background: -webkit-gradient(linear, left top, left $stop, from($color1), to($color2))
+@mixin gradient($color1, $color2, $start: 0%, $stop: 100%)
+  background: -webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
   @each $browser in webkit, moz, o, ms
-    background: -#{$browser}-linear-gradient(top, $color1 0%, $color2 $stop)
-  background: linear-gradient(top, $color1 0%, $color2 $stop)
+    background: -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
+  background: linear-gradient(top, $color1 $start, $color2 $stop)
