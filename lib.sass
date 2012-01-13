@@ -3,9 +3,9 @@
 // Pixels work just as well (ie 960 px).  I'm just on a fluid grid kick right now.
 
 
-$width: 100%
+$width: 960px
 $grid_cols: 16
-$gutters: 1.5%
+$gutters: 10px
 
 // Lib
 
@@ -14,7 +14,7 @@ $gutters: 1.5%
   margin: 0 auto
 
 @mixin grid($cols, $margin-left: $gutters, $margin-right: $gutters)
-  width: (($width / $grid_cols) * $cols) - ($gutters * 2)
+  width: (($width / $grid_cols) * $cols) - ($margin-left + $margin-right)
   display: inline
   float: left
   margin-left: $margin-left
