@@ -1,7 +1,7 @@
 Super Basic Sass Library
 ========================
 
-Starter kit for building fluid grids with Sass.  Inspired by 960.gs and a plane ride to Oregon.
+Starter kit for building -fluid- grids with Sass.  Inspired by 960.gs and a plane ride to Oregon.
 
 Basic usage
 -----------
