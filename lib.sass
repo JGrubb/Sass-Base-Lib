@@ -33,15 +33,19 @@ $gutters: 10px
 
 // I never use the push/pull feature in 960, so it's possible that this doesn't work correctly.
 
-@mixin radius($a)
-  -moz-border-radius: $a
-  -webkit-border-radius: $a
-  border-radius: $a
+@mixin radius($args)
+  -moz-border-radius: $args
+  -webkit-border-radius: $args
+  -ms-border-radius: $args
+  -o-border-radius: $args
+  border-radius: $args
   
-@mixin shadow($a, $b, $c, $d)
-  -moz-box-shadow: $a $b $c $d
-  -webkit-box-shadow: $a $b $c $d
-  box-shadow: $a $b $c $d
+@mixin shadow($args)
+  -moz-box-shadow: $args
+  -webkit-box-shadow: $args
+  -ms-box-shadow: $args
+  -o-box-shadow: $args
+  box-shadow: $args
   
 @mixin gradient($color1, $color2, $start: 0%, $stop: 100%)
   background: -webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
