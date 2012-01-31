@@ -40,12 +40,15 @@ $gutters: 10px
   -o-border-radius: $args
   border-radius: $args
   
-@mixin shadow($args)
-  -moz-box-shadow: $args
-  -webkit-box-shadow: $args
-  -ms-box-shadow: $args
-  -o-box-shadow: $args
-  box-shadow: $args
+@mixin shadow($args, $args2: false)
+  $params: $args
+  @if $args2 != false
+    $params: $args, $args2
+  -moz-box-shadow: $params
+  -webkit-box-shadow: $params
+  -ms-box-shadow: $params
+  -o-box-shadow: $params
+  box-shadow: $params
   
 @mixin gradient($color1, $color2, $start: 0%, $stop: 100%)
   background: -webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
