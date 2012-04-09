@@ -93,7 +93,6 @@ $gutters: 10px
         @each $browser in webkit, moz, o, ms
           background: url('#{$url}') #{$position}, -#{$browser}-linear-gradient(top, $hover1 $start, $hover2 $stop)
         background: url('#{$url}') #{$position}, linear-gradient(top, $hover1 $start, $hover2 $stop)
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$hover1', endColorstr='$hover2',GradientType=0 )
   @else
     background: -webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
     @each $browser in webkit, moz, o, ms
