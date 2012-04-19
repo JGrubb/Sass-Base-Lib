@@ -20,6 +20,14 @@ $gutters: 10px
   margin-left: $margin-left
   margin-right: $margin-right
 
+// Prefix, suffix to pad divs in
+
+@mixin prefix($cols)
+  padding-left: (($width / $grid_cols) * $cols)
+  
+@mixin suffix($cols)
+  padding-right: (($width / $grid_cols) * $cols)
+
 // Usage: @include grid(4)
 // If a nested grid - @include grid(4, $margin-left: 0)
 
