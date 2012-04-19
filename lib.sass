@@ -13,7 +13,13 @@ $gutters: 10px
   width: $width
   margin: 0 auto
 
-@mixin grid($cols, $margin-left: $gutters, $margin-right: $gutters)
+@mixin grid($cols, $alpha: false, $omega: false)
+  $margin-left: $gutters
+  $margin-right: $gutters
+  @if $alpha != false
+    $margin-left: 0
+  @if $omega != false
+    $margin-right: 0
   width: (($width / $grid_cols) * $cols) - ($margin-left + $margin-right)
   display: inline
   float: left
@@ -27,9 +33,6 @@ $gutters: 10px
   
 @mixin suffix($cols)
   padding-right: (($width / $grid_cols) * $cols)
-
-// Usage: @include grid(4)
-// If a nested grid - @include grid(4, $margin-left: 0)
 
 @mixin push($cols)
   position: relative
