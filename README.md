@@ -1,14 +1,17 @@
-Super Basic Sass Library
-========================
+#Super Basic Sass Library
+
 
 Starter kit for building -fluid- grids with Sass.  Inspired by 960.gs and a plane ride to Oregon.
 
-Basic usage
------------
+##Basic usage
 
 I'm just starting to get my head around what this means for fluid layouts, so please bear with me if you find something glaringly wrong in the documentation with regards to how this thing interacts with itself. ->
 
-This library can be used to build fixed grids like the 960.gs with no problem.  Set the $width variable at the top of the lib.sass sheet to whatever, say 960px, and you're good to go.  About a month after starting this and really starting to love fluid grids, it turns out that it's even better for those.  Set width to 100%, set your gutters to a percentage as well, and you're off to the races.
+This library can be used to build fixed grids like the 960.gs with no problem.  
+
+Set the $width variable at the top of the lib.sass sheet to whatever, say 960px, chose how many columns and how wide the gutters and you're good to go.  
+
+About a month after starting this and really starting to love fluid grids, it turns out that it's even better for those.  Set width to 100%, set your gutters to a percentage as well, and you're off to the races.
 
 At the top of your style sheet:
 
@@ -28,30 +31,45 @@ then something like this for your layout --
     #main
       @include grid(12)
         
-fixed grid nesting
-------------------
+##fixed grid nesting
 
-Note that the 960.gs conventions of Alpha and Omega for nested grid units are not longer present.  I've instead included arguments for the left and right margins of a column.  If you're nesting grid units inside of others, just set the $margin-left to 0 for the first one:
+I have $alpha and $omega parameters for the grid() mixin.  They are set to false by default.  Set these to true to emulate the `.alpha` and `.omega` classes of the 960.gs.
+
+###Two columns nested inside of a grid(6) column.
 
     #nested-left
-      @include grid(3, $margin-left:0)
+      @include grid(3, $alpha: true)
       
     #nested-right
-      @include grid(3, $margin-right:0)
+      @include grid(3, $omega: true)
       
-fluid grid nesting
-------------------
+##fluid grid nesting
 
-Since the fluid grid works off of percentages, and the percentages are relative to the containing element, the fluid grid will react a little differently than the fixed grid.  If you wanted to nest a pair of 3 span columns inside a 6 span column, rather than specifying `grid(3)` for both, you'd actually specify `grid(6)` for both (assuming a 12 column grid).  How the margin settings will work to keep your grid tidy in this arrangement remains to be seen.  I haven't tried it yet.
+Don't even try it.  I have no idea how this works out, since fluid columns are a percentage, and nested percentages are relative to the containing unit, and not the `$width` variable.
 
-Cont.
------
-        
-This also handily negates the need for the prefix and suffix classes for moving stuff in a little more.  Instead of having to apply `grid_4 prefix_1 suffix_1` to pad a 6 grid box correctly, you just say
+##Mobile
 
-    @include grid(6, $margin-left: 10%, $margin-right: 10%)
+I've included very rudimentary mobile support on grid columns.  Media queries are included on the grid() mixin, so anything that is mobile sized will automatically trigger a full width an no floats.  
+
+##Cont.
+
+Prefix and Suffix mixins are included to pad elements in grid units.  I think I took that terminology from Blueprint, I can't remember.  Haven't yet factored those into the media queries.
+
+    #main
+      @include container
+      
+    #left
+      @include grid(2)
+      @prefix(2)
     
-I know suffix and prefix work with padding instead of margins, so I'll get around to that soon.
+    #center
+      @include grid(6)
+      @include prefix(1)
+      @include suffix(1)
+      
+    #right
+      @include grid(4)
+
 
 Push and Pull mixins are included for content first layouts:
 
@@ -79,5 +97,5 @@ For adding things like gradients and radiused corners:
         position: relative
         top: 1px
         
-More to come?
--------------
+
+Lots of support for cross-browser gradients (in browsers that can do gradients).
