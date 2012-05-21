@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sass-base-lib by JGrubb</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Sass-base-lib</h1>
+        <p>SSIA</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/JGrubb/Sass-Base-Lib" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/JGrubb/Sass-Base-Lib/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/JGrubb/Sass-Base-Lib/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>Super Basic Sass Library</h1>
+
+<p>Starter kit for building -fluid- grids with Sass.  Inspired by 960.gs and a plane ride to Oregon.</p>
+
+<h2>Basic usage</h2>
+
+<p>I'm just starting to get my head around what this means for fluid layouts, so please bear with me if you find something glaringly wrong in the documentation with regards to how this thing interacts with itself. -&gt;</p>
+
+<p>This library can be used to build fixed grids like the 960.gs with no problem.  </p>
+
+<p>Set the $width variable at the top of the lib.sass sheet to whatever, say 960px, chose how many columns and how wide the gutters and you're good to go.  </p>
+
+<p>About a month after starting this and really starting to love fluid grids, it turns out that it's even better for those.  Set width to 100%, set your gutters to a percentage as well, and you're off to the races.</p>
+
+<p>At the top of your style sheet:</p>
+
+<pre><code>@import lib
+</code></pre>
+
+<p>then something like this for your layout --</p>
+
+<pre><code>#wrapper
+  @include container()
+
+#header
+  @include grid(16)
+
+#left-sidebar
+  @include grid(4)
+
+#main
+  @include grid(12)
+</code></pre>
+
+<h2>fixed grid nesting</h2>
+
+<p>I have $alpha and $omega parameters for the grid() mixin.  They are set to false by default.  Set these to true to emulate the <code>.alpha</code> and <code>.omega</code> classes of the 960.gs.</p>
+
+<h3>Two columns nested inside of a grid(6) column.</h3>
+
+<pre><code>#nested-left
+  @include grid(3, $alpha: true)
+
+#nested-right
+  @include grid(3, $omega: true)
+</code></pre>
+
+<h2>fluid grid nesting</h2>
+
+<p>Don't even try it.  I have no idea how this works out, since fluid columns are a percentage, and nested percentages are relative to the containing unit, and not the <code>$width</code> variable.</p>
+
+<h2>Mobile</h2>
+
+<p>I've included very rudimentary mobile support on grid columns.  Media queries are included on the grid() mixin, so anything that is mobile sized will automatically trigger a full width an no floats.  </p>
+
+<h2>Cont.</h2>
+
+<p>Prefix and Suffix mixins are included to pad elements in grid units.  I think I took that terminology from Blueprint, I can't remember.  Haven't yet factored those into the media queries.</p>
+
+<pre><code>#main
+  @include container
+
+#left
+  @include grid(2)
+  @prefix(2)
+
+#center
+  @include grid(6)
+  @include prefix(1)
+  @include suffix(1)
+
+#right
+  @include grid(4)
+</code></pre>
+
+<p>Push and Pull mixins are included for content first layouts:</p>
+
+<pre><code>#main
+  @include grid(12)
+  @include push(4)
+
+#left-sidebar
+  @include grid(4)
+  @include pull(12)
+</code></pre>
+
+<p>I know this particular wheel has been invented (Compass, et al), but I get tired of unzipping a copy of the 960.gs every time I start a new project and Compass seemed to have a tiny learning curve that I didn't have time for when I wrote this.  This will at the very least cause me, and only me, to think more carefully about the semantics of my markup.</p>
+
+<h2>Styling</h2>
+
+<p>For adding things like gradients and radiused corners:</p>
+
+<pre><code>.button
+  @include radius(3px)
+  @include gradient(#f4f4f4, #ddd)
+  &amp;:hover
+    @include shadow(0, 0, 2px, #444)
+  &amp;:active
+    position: relative
+    top: 1px
+</code></pre>
+
+<p>Lots of support for cross-browser gradients (in browsers that can do gradients).</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/JGrubb">JGrubb</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
