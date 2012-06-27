@@ -133,3 +133,9 @@ $gutters: 10px
     @each $browser in webkit, moz, o, ms
       background: -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
     background: linear-gradient(top, $color1 $start, $color2 $stop)
+
+@mixin stop-gradient($color1, $color2, $color3: $color1, $start: 0%, $stop: 50%, $end: 100%)
+  @each $browser in webkit, moz, o, ms
+    background: -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop, $color3 $end)
+  -pie-background: linear-gradient(top, $color1 $start, $color2 $stop, $color3 $end)
+  background: linear-gradient(top, $color1 $start, $color2 $stop, $color3 $end)
