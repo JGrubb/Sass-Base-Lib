@@ -16,15 +16,18 @@ $gutters: 10px
 @mixin grid($cols, $alpha: false, $omega: false)
   $margin-left: $gutters
   $margin-right: $gutters
+  width: $width / $grid_cols * $cols - ($margin-left + $margin-right)
   @if $alpha != false
     $margin-left: 0
   @if $omega != false
     $margin-right: 0
-  width: (($width / $grid_cols) * $cols) - ($margin-left + $margin-right)
   display: inline
   float: left
   margin-left: $margin-left
   margin-right: $margin-right
+  @media screen and (max-width: 480px)
+    float: none
+    width: auto
 
 // Prefix, suffix to pad divs in
 
