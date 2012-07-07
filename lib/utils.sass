@@ -1,0 +1,16 @@
+@mixin radius($args)
+  -moz-border-radius: $args
+  -webkit-border-radius: $args
+  -ms-border-radius: $args
+  -o-border-radius: $args
+  border-radius: $args
+  
+@mixin shadow($args, $args2: false)
+  $params: $args
+  @if $args2 != false
+    $params: $args, $args2
+  -moz-box-shadow: $params
+  -webkit-box-shadow: $params
+  -ms-box-shadow: $params
+  -o-box-shadow: $params
+  box-shadow: $params

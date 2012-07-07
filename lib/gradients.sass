@@ -1,0 +1,78 @@
+@mixin glass-button($color1, $color2, $color3, $color4, $url: false, $position: false)
+  @if $url != false
+    background: url('#{$url}') #{$position}, $color1
+    background: url('#{$url}') #{$position}, -webkit-gradient(linear, left top, left bottom, color-stop(0%, $color1), color-stop(50%, $color2), color-stop(51%, $color3), color-stop(100%, $color4))
+    @each $browser in webkit, moz, o, ms
+      background: url('#{$url}') #{$position}, #{$browser}-linear-gradient(top, $color1 0%, $color2 50%, $color3 51%, $color4 100%)
+    background: url('#{$url}') #{$position}, -linear-gradient(top, $color1 0%, $color2 50%, $color3 51%, $color4 100%)
+    &:hover
+      background: url('#{$url}') #{$position}, darken($color1, 5%)
+      background: url('#{$url}') #{$position}, -webkit-gradient(linear, left top, left bottom, color-stop(0%, darken($color1, 5%)), color-stop(50%, darken($color2, 5%)), color-stop(51%, darken($color3, 5%)), color-stop(100%, darken($color4, 5%)))
+      @each $browser in webkit, moz, o, ms
+        background: url('#{$url}') #{$position}, #{$browser}-linear-gradient(top, darken($color1, 5%) 0%, darken($color2, 5%) 50%, darken($color3, 5%) 51%, darken($color4, 5%) 100%)
+      background: url('#{$url}') #{$position}, -linear-gradient(top, darken($color1, 5%) 0%, darken($color2, 5%) 50%, darken($color3, 5%) 51%, darken($color4, 5%) 100%)
+  @else
+    background: $color1
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $color1), color-stop(50%, $color2), color-stop(51%, $color3), color-stop(100%, $color4))
+    @each $browser in webkit, moz, o, ms
+      background: #{$browser}-linear-gradient(top, $color1 0%, $color2 50%, $color3 51%, $color4 100%)
+    background: -linear-gradient(top, $color1 0%, $color2 50%, $color3 51%, $color4 100%)
+    &:hover
+      background: darken($color1, 5%)
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, darken($color1, 5%)), color-stop(50%, darken($color2, 5%)), color-stop(51%, darken($color3, 5%)), color-stop(100%, darken($color4, 5%)))
+      @each $browser in webkit, moz, o, ms
+        background: #{$browser}-linear-gradient(top, darken($color1, 5%) 0%, darken($color2, 5%) 50%, darken($color3, 5%) 51%, darken($color4, 5%) 100%)
+      background: -linear-gradient(top, darken($color1, 5%) 0%, darken($color2, 5%) 50%, darken($color3, 5%) 51%, darken($color4, 5%) 100%)
+  
+@mixin hover-gradient($color1, $color2, $start: 0%, $stop: 100%, $url: false, $position: false, $hover1: false, $hover2: false)
+  @if $url != false
+    background: url('#{$url}') #{$position},-webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
+    @each $browser in webkit, moz, o, ms
+      background: url('#{$url}') #{$position}, -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
+    background: url('#{$url}') #{$position}, linear-gradient(top, $color1 $start, $color2 $stop)
+    &:hover
+      @if $hover1 == false
+        background: url('#{$url}') #{$position},-webkit-gradient(linear, left $start, left $stop, from(darken($color1, 5%)), to(darken($color2, 5%)))
+        @each $browser in webkit, moz, o, ms
+          background: url('#{$url}') #{$position}, -#{$browser}-linear-gradient(top, darken($color1, 5%) $start, darken($color2, 5%) $stop)
+        background: url('#{$url}') #{$position}, linear-gradient(top, darken($color1, 5%) $start, darken($color2, 5%) $stop)
+      @else
+        background: url('#{$url}') #{$position},-webkit-gradient(linear, left $start, left $stop, from($hover1), to($hover2))
+        @each $browser in webkit, moz, o, ms
+          background: url('#{$url}') #{$position}, -#{$browser}-linear-gradient(top, $hover1 $start, $hover2 $stop)
+        background: url('#{$url}') #{$position}, linear-gradient(top, $hover1 $start, $hover2 $stop)
+  @else
+    background: -webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
+    @each $browser in webkit, moz, o, ms
+      background: -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
+    background: linear-gradient(top, $color1 $start, $color2 $stop)
+    &:hover
+      @if $hover1 == false
+        background: -webkit-gradient(linear, left $start, left $stop, from(darken($color1, 5%)), to(darken($color2, 5%)))
+        @each $browser in webkit, moz, o, ms
+          background: -#{$browser}-linear-gradient(top, darken($color1, 5%) $start, darken($color2, 5%) $stop)
+        background: linear-gradient(top, darken($color1, 5%) $start, darken($color2, 5%) $stop)
+      @else
+        background: -webkit-gradient(linear, left $start, left $stop, from($hover1), to($hover2))
+        @each $browser in webkit, moz, o, ms
+          background: -#{$browser}-linear-gradient(top, $hover1 $start, $hover2 $stop)
+        background: linear-gradient(top, $hover1 $start, $hover2 $stop)
+
+
+@mixin gradient($color1, $color2, $start: 0%, $stop: 100%, $url: false, $position: false)
+  @if $url != false
+    background: url('#{$url}') #{$position},-webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
+    @each $browser in webkit, moz, o, ms
+      background: url('#{$url}') #{$position}, -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
+    background: url('#{$url}') #{$position}, linear-gradient(top, $color1 $start, $color2 $stop)
+  @else
+    background: -webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
+    @each $browser in webkit, moz, o, ms
+      background: -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
+    background: linear-gradient(top, $color1 $start, $color2 $stop)
+
+@mixin stop-gradient($color1, $color2, $color3: $color1, $start: 0%, $stop: 50%, $end: 100%)
+  @each $browser in webkit, moz, o, ms
+    background: -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop, $color3 $end)
+  -pie-background: linear-gradient(top, $color1 $start, $color2 $stop, $color3 $end)
+  background: linear-gradient(top, $color1 $start, $color2 $stop, $color3 $end)

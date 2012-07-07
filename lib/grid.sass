@@ -1,0 +1,46 @@
+// Define width and number of columns and gutters
+// Change to suit.
+// Pixels work just as well (ie 960 px).  I'm just on a fluid grid kick right now.
+
+
+$width: 960px
+$grid_cols: 16
+$gutters: 10px
+
+// Lib
+
+@mixin container()
+  width: $width
+  margin: 0 auto
+
+@mixin grid($cols, $alpha: false, $omega: false)
+  $margin-left: $gutters
+  $margin-right: $gutters
+  width: $width / $grid_cols * $cols - ($margin-left + $margin-right)
+  @if $alpha != false
+    $margin-left: 0
+  @if $omega != false
+    $margin-right: 0
+  display: inline
+  float: left
+  margin-left: $margin-left
+  margin-right: $margin-right
+  @media screen and (max-width: 480px)
+    float: none
+    width: auto
+
+// Prefix, suffix to pad divs in
+
+@mixin prefix($cols)
+  padding-left: (($width / $grid_cols) * $cols)
+  
+@mixin suffix($cols)
+  padding-right: (($width / $grid_cols) * $cols)
+
+@mixin push($cols)
+  position: relative
+  left: (($width / $grid_cols) * $cols)
+  
+@mixin pull($cols)
+  position: relative
+  left: -(($width / $grid_cols) * $cols)
