@@ -3,7 +3,7 @@
 // Pixels work just as well (ie 960 px).  I'm just on a fluid grid kick right now.
 
 
-$width: 800px
+$width: 960px
 $grid_cols: 12
 $gutters: 10px
 $tablet: 768px
@@ -28,7 +28,7 @@ $handhelp: 480px
   margin-left: $margin-left
   margin-right: $margin-right
   @media screen and (max-width: $tablet)
-  @media screen and (max-width: $handheld)
+  @media screen and (max-width: 480px)
     float: none
     width: auto
 
@@ -36,9 +36,13 @@ $handhelp: 480px
 
 @mixin prefix($cols)
   padding-left: (($width / $grid_cols) * $cols)
+  @media screen and (max-width: 480px)
+    padding: 0
   
 @mixin suffix($cols)
   padding-right: (($width / $grid_cols) * $cols)
+  @media screen and (max-width: 480px)
+    padding: 0
 
 @mixin push($cols)
   position: relative
