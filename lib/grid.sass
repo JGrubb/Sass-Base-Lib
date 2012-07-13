@@ -2,12 +2,12 @@
 // Change to suit.
 // Pixels work just as well (ie 960 px).  I'm just on a fluid grid kick right now.
 
-
+// these are defaults and be overridden higher up in your actual stylesheets.
 $width: 960px
 $grid_cols: 12
 $gutters: 10px
 $tablet: 768px
-$handhelp: 480px
+$handheld: 480px
 
 // Lib
 
@@ -28,7 +28,7 @@ $handhelp: 480px
   margin-left: $margin-left
   margin-right: $margin-right
   @media screen and (max-width: $tablet)
-  @media screen and (max-width: 480px)
+  @media screen and (max-width: $handheld)
     float: none
     width: auto
 
