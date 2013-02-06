@@ -1,0 +1,34 @@
+@mixin gradient($color1, $color2, $start: 0%, $stop: 100%, $url: false, $position: false)
+  @if $url != false
+    background: url('#{$url}') #{$position},-webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
+    @each $browser in webkit, moz, o, ms
+      background: url('#{$url}') #{$position}, -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
+    background: url('#{$url}') #{$position}, linear-gradient(top, $color1 $start, $color2 $stop)
+  @else
+    background: -webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
+    @each $browser in webkit, moz, o, ms
+      background: -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
+    background: linear-gradient(top, $color1 $start, $color2 $stop)
+
+@mixin stop-gradient($color1, $color2, $color3: $color1, $start: 0%, $stop: 50%, $end: 100%)
+  @each $browser in webkit, moz, o, ms
+    background: -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop, $color3 $end)
+  -pie-background: linear-gradient(top, $color1 $start, $color2 $stop, $color3 $end)
+  background: linear-gradient(top, $color1 $start, $color2 $stop, $color3 $end)
+  
+@mixin radius($args)
+  -moz-border-radius: $args
+  -webkit-border-radius: $args
+  -ms-border-radius: $args
+  -o-border-radius: $args
+  border-radius: $args
+
+@mixin shadow($args, $args2: false)
+  $params: $args
+  @if $args2 != false
+    $params: $args, $args2
+  -moz-box-shadow: $params
+  -webkit-box-shadow: $params
+  -ms-box-shadow: $params
+  -o-box-shadow: $params
+  box-shadow: $params
