@@ -98,4 +98,4 @@ For adding things like gradients and radiused corners:
         top: 1px
         
 
-Lots of support for cross-browser gradients (in browsers that can do gradients).
+Lots of support for cross-browser gradients (in browsers that can do gradients), although the syntax has changed lately, so I need to update those.  
