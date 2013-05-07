@@ -1,10 +1,12 @@
 @mixin gradient($color1, $color2, $start: 0%, $stop: 100%, $url: false, $position: false)
   @if $url != false
+    background: $color1 url('#{$url}') #{$position}
     background: url('#{$url}') #{$position},-webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
     @each $browser in webkit, moz, o, ms
       background: url('#{$url}') #{$position}, -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
     background: url('#{$url}') #{$position}, linear-gradient(top, $color1 $start, $color2 $stop)
   @else
+    background: $color1
     background: -webkit-gradient(linear, left $start, left $stop, from($color1), to($color2))
     @each $browser in webkit, moz, o, ms
       background: -#{$browser}-linear-gradient(top, $color1 $start, $color2 $stop)
